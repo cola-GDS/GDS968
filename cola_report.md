@@ -1,7 +1,7 @@
-cola Report for Consensus Partitioning
+cola Report for GDS968
 ==================
 
-**Date**: 2019-12-04 10:12:29 CET, **cola version**: 1.3.2
+**Date**: 2019-12-25 22:22:16 CET, **cola version**: 1.3.2
 
 ----------------------------------------------------------------
 
@@ -2484,7 +2484,7 @@ collect_plots(res)
 
 The plots are:
 
-- The first row: a plot of the ECDF (Empirical cumulative distribution
+- The first row: a plot of the ECDF (empirical cumulative distribution
   function) curves of the consensus matrix for each `k` and the heatmap of
   predicted classes for each `k`.
 - The second row: heatmaps of the consensus matrix for each `k`.
@@ -2512,7 +2512,7 @@ statistics for choosing "optimized" `k`. There are following statistics:
   the partition of k and k-1 and the pairs of samples are both in a same
   cluster in the partition k or k-1.
 
-The detailed explanations of these statistics can be found in [the cola
+The detailed explanations of these statistics can be found in [the _cola_
 vignette](http://bioconductor.org/packages/devel/bioc/vignettes/cola/inst/doc/cola.html#toc_13).
 
 Generally speaking, lower PAC score, higher mean silhouette score or higher
@@ -2543,12 +2543,14 @@ get_stats(res)
 
 `suggest_best_k()` suggests the best $k$ based on these statistics. The rules are as follows:
 
-- All $k$ with Jaccard index larger than 0.95 are removed because the increase of
-  the partition number does not provides enough extra information. If all $k$ are removed,
-  the best $k$ is assigned by `NA`.
-- For $k$ with 1-PAC larger than 0.9, the maximal $k$ is taken as the "best k". Other $k$ is called "optional k".
-- If it does not fit the second rule. The $k$ with the highest vote of highest
-  1-PAC, mean silhouette and concordance is taken as the "best k".
+- All $k$ with Jaccard index larger than 0.95 are removed because increasing
+  $k$ does not provide enough extra information. If all $k$ are removed, it is
+  marked as no subgroup is detected.
+- For all $k$ with 1-PAC score larger than 0.9, the maximal $k$ is taken as
+  the best $k$, and other $k$ are marked as optional $k$.
+- If it does not fit the second rule. The $k$ with the maximal vote of the
+  highest 1-PAC score, highest mean silhouette, and highest concordance is
+  taken as the best $k$.
 
 ```r
 suggest_best_k(res)
@@ -3878,8 +3880,8 @@ test_to_known_factors(res)
 
 
 
-If matrix rows can be associated to genes, consider to use `GO_Enrichment(res,
-...)` to perform function enrichment for the signature genes.
+If matrix rows can be associated to genes, consider to use `functional_enrichment(res,
+...)` to perform function enrichment for the signature genes. See [this vignette](http://bioconductor.org/packages/devel/bioc/vignettes/cola/inst/doc/functional_enrichment.html) for more detailed explanations.
 
 
  
@@ -3943,7 +3945,7 @@ collect_plots(res)
 
 The plots are:
 
-- The first row: a plot of the ECDF (Empirical cumulative distribution
+- The first row: a plot of the ECDF (empirical cumulative distribution
   function) curves of the consensus matrix for each `k` and the heatmap of
   predicted classes for each `k`.
 - The second row: heatmaps of the consensus matrix for each `k`.
@@ -3971,7 +3973,7 @@ statistics for choosing "optimized" `k`. There are following statistics:
   the partition of k and k-1 and the pairs of samples are both in a same
   cluster in the partition k or k-1.
 
-The detailed explanations of these statistics can be found in [the cola
+The detailed explanations of these statistics can be found in [the _cola_
 vignette](http://bioconductor.org/packages/devel/bioc/vignettes/cola/inst/doc/cola.html#toc_13).
 
 Generally speaking, lower PAC score, higher mean silhouette score or higher
@@ -4002,12 +4004,14 @@ get_stats(res)
 
 `suggest_best_k()` suggests the best $k$ based on these statistics. The rules are as follows:
 
-- All $k$ with Jaccard index larger than 0.95 are removed because the increase of
-  the partition number does not provides enough extra information. If all $k$ are removed,
-  the best $k$ is assigned by `NA`.
-- For $k$ with 1-PAC larger than 0.9, the maximal $k$ is taken as the "best k". Other $k$ is called "optional k".
-- If it does not fit the second rule. The $k$ with the highest vote of highest
-  1-PAC, mean silhouette and concordance is taken as the "best k".
+- All $k$ with Jaccard index larger than 0.95 are removed because increasing
+  $k$ does not provide enough extra information. If all $k$ are removed, it is
+  marked as no subgroup is detected.
+- For all $k$ with 1-PAC score larger than 0.9, the maximal $k$ is taken as
+  the best $k$, and other $k$ are marked as optional $k$.
+- If it does not fit the second rule. The $k$ with the maximal vote of the
+  highest 1-PAC score, highest mean silhouette, and highest concordance is
+  taken as the best $k$.
 
 ```r
 suggest_best_k(res)
@@ -5337,8 +5341,8 @@ test_to_known_factors(res)
 
 
 
-If matrix rows can be associated to genes, consider to use `GO_Enrichment(res,
-...)` to perform function enrichment for the signature genes.
+If matrix rows can be associated to genes, consider to use `functional_enrichment(res,
+...)` to perform function enrichment for the signature genes. See [this vignette](http://bioconductor.org/packages/devel/bioc/vignettes/cola/inst/doc/functional_enrichment.html) for more detailed explanations.
 
 
  
@@ -5402,7 +5406,7 @@ collect_plots(res)
 
 The plots are:
 
-- The first row: a plot of the ECDF (Empirical cumulative distribution
+- The first row: a plot of the ECDF (empirical cumulative distribution
   function) curves of the consensus matrix for each `k` and the heatmap of
   predicted classes for each `k`.
 - The second row: heatmaps of the consensus matrix for each `k`.
@@ -5430,7 +5434,7 @@ statistics for choosing "optimized" `k`. There are following statistics:
   the partition of k and k-1 and the pairs of samples are both in a same
   cluster in the partition k or k-1.
 
-The detailed explanations of these statistics can be found in [the cola
+The detailed explanations of these statistics can be found in [the _cola_
 vignette](http://bioconductor.org/packages/devel/bioc/vignettes/cola/inst/doc/cola.html#toc_13).
 
 Generally speaking, lower PAC score, higher mean silhouette score or higher
@@ -5461,12 +5465,14 @@ get_stats(res)
 
 `suggest_best_k()` suggests the best $k$ based on these statistics. The rules are as follows:
 
-- All $k$ with Jaccard index larger than 0.95 are removed because the increase of
-  the partition number does not provides enough extra information. If all $k$ are removed,
-  the best $k$ is assigned by `NA`.
-- For $k$ with 1-PAC larger than 0.9, the maximal $k$ is taken as the "best k". Other $k$ is called "optional k".
-- If it does not fit the second rule. The $k$ with the highest vote of highest
-  1-PAC, mean silhouette and concordance is taken as the "best k".
+- All $k$ with Jaccard index larger than 0.95 are removed because increasing
+  $k$ does not provide enough extra information. If all $k$ are removed, it is
+  marked as no subgroup is detected.
+- For all $k$ with 1-PAC score larger than 0.9, the maximal $k$ is taken as
+  the best $k$, and other $k$ are marked as optional $k$.
+- If it does not fit the second rule. The $k$ with the maximal vote of the
+  highest 1-PAC score, highest mean silhouette, and highest concordance is
+  taken as the best $k$.
 
 ```r
 suggest_best_k(res)
@@ -6796,8 +6802,8 @@ test_to_known_factors(res)
 
 
 
-If matrix rows can be associated to genes, consider to use `GO_Enrichment(res,
-...)` to perform function enrichment for the signature genes.
+If matrix rows can be associated to genes, consider to use `functional_enrichment(res,
+...)` to perform function enrichment for the signature genes. See [this vignette](http://bioconductor.org/packages/devel/bioc/vignettes/cola/inst/doc/functional_enrichment.html) for more detailed explanations.
 
 
  
@@ -6861,7 +6867,7 @@ collect_plots(res)
 
 The plots are:
 
-- The first row: a plot of the ECDF (Empirical cumulative distribution
+- The first row: a plot of the ECDF (empirical cumulative distribution
   function) curves of the consensus matrix for each `k` and the heatmap of
   predicted classes for each `k`.
 - The second row: heatmaps of the consensus matrix for each `k`.
@@ -6889,7 +6895,7 @@ statistics for choosing "optimized" `k`. There are following statistics:
   the partition of k and k-1 and the pairs of samples are both in a same
   cluster in the partition k or k-1.
 
-The detailed explanations of these statistics can be found in [the cola
+The detailed explanations of these statistics can be found in [the _cola_
 vignette](http://bioconductor.org/packages/devel/bioc/vignettes/cola/inst/doc/cola.html#toc_13).
 
 Generally speaking, lower PAC score, higher mean silhouette score or higher
@@ -6920,12 +6926,14 @@ get_stats(res)
 
 `suggest_best_k()` suggests the best $k$ based on these statistics. The rules are as follows:
 
-- All $k$ with Jaccard index larger than 0.95 are removed because the increase of
-  the partition number does not provides enough extra information. If all $k$ are removed,
-  the best $k$ is assigned by `NA`.
-- For $k$ with 1-PAC larger than 0.9, the maximal $k$ is taken as the "best k". Other $k$ is called "optional k".
-- If it does not fit the second rule. The $k$ with the highest vote of highest
-  1-PAC, mean silhouette and concordance is taken as the "best k".
+- All $k$ with Jaccard index larger than 0.95 are removed because increasing
+  $k$ does not provide enough extra information. If all $k$ are removed, it is
+  marked as no subgroup is detected.
+- For all $k$ with 1-PAC score larger than 0.9, the maximal $k$ is taken as
+  the best $k$, and other $k$ are marked as optional $k$.
+- If it does not fit the second rule. The $k$ with the maximal vote of the
+  highest 1-PAC score, highest mean silhouette, and highest concordance is
+  taken as the best $k$.
 
 ```r
 suggest_best_k(res)
@@ -8255,8 +8263,8 @@ test_to_known_factors(res)
 
 
 
-If matrix rows can be associated to genes, consider to use `GO_Enrichment(res,
-...)` to perform function enrichment for the signature genes.
+If matrix rows can be associated to genes, consider to use `functional_enrichment(res,
+...)` to perform function enrichment for the signature genes. See [this vignette](http://bioconductor.org/packages/devel/bioc/vignettes/cola/inst/doc/functional_enrichment.html) for more detailed explanations.
 
 
  
@@ -8320,7 +8328,7 @@ collect_plots(res)
 
 The plots are:
 
-- The first row: a plot of the ECDF (Empirical cumulative distribution
+- The first row: a plot of the ECDF (empirical cumulative distribution
   function) curves of the consensus matrix for each `k` and the heatmap of
   predicted classes for each `k`.
 - The second row: heatmaps of the consensus matrix for each `k`.
@@ -8348,7 +8356,7 @@ statistics for choosing "optimized" `k`. There are following statistics:
   the partition of k and k-1 and the pairs of samples are both in a same
   cluster in the partition k or k-1.
 
-The detailed explanations of these statistics can be found in [the cola
+The detailed explanations of these statistics can be found in [the _cola_
 vignette](http://bioconductor.org/packages/devel/bioc/vignettes/cola/inst/doc/cola.html#toc_13).
 
 Generally speaking, lower PAC score, higher mean silhouette score or higher
@@ -8379,12 +8387,14 @@ get_stats(res)
 
 `suggest_best_k()` suggests the best $k$ based on these statistics. The rules are as follows:
 
-- All $k$ with Jaccard index larger than 0.95 are removed because the increase of
-  the partition number does not provides enough extra information. If all $k$ are removed,
-  the best $k$ is assigned by `NA`.
-- For $k$ with 1-PAC larger than 0.9, the maximal $k$ is taken as the "best k". Other $k$ is called "optional k".
-- If it does not fit the second rule. The $k$ with the highest vote of highest
-  1-PAC, mean silhouette and concordance is taken as the "best k".
+- All $k$ with Jaccard index larger than 0.95 are removed because increasing
+  $k$ does not provide enough extra information. If all $k$ are removed, it is
+  marked as no subgroup is detected.
+- For all $k$ with 1-PAC score larger than 0.9, the maximal $k$ is taken as
+  the best $k$, and other $k$ are marked as optional $k$.
+- If it does not fit the second rule. The $k$ with the maximal vote of the
+  highest 1-PAC score, highest mean silhouette, and highest concordance is
+  taken as the best $k$.
 
 ```r
 suggest_best_k(res)
@@ -9717,8 +9727,8 @@ test_to_known_factors(res)
 
 
 
-If matrix rows can be associated to genes, consider to use `GO_Enrichment(res,
-...)` to perform function enrichment for the signature genes.
+If matrix rows can be associated to genes, consider to use `functional_enrichment(res,
+...)` to perform function enrichment for the signature genes. See [this vignette](http://bioconductor.org/packages/devel/bioc/vignettes/cola/inst/doc/functional_enrichment.html) for more detailed explanations.
 
 
  
@@ -9782,7 +9792,7 @@ collect_plots(res)
 
 The plots are:
 
-- The first row: a plot of the ECDF (Empirical cumulative distribution
+- The first row: a plot of the ECDF (empirical cumulative distribution
   function) curves of the consensus matrix for each `k` and the heatmap of
   predicted classes for each `k`.
 - The second row: heatmaps of the consensus matrix for each `k`.
@@ -9810,7 +9820,7 @@ statistics for choosing "optimized" `k`. There are following statistics:
   the partition of k and k-1 and the pairs of samples are both in a same
   cluster in the partition k or k-1.
 
-The detailed explanations of these statistics can be found in [the cola
+The detailed explanations of these statistics can be found in [the _cola_
 vignette](http://bioconductor.org/packages/devel/bioc/vignettes/cola/inst/doc/cola.html#toc_13).
 
 Generally speaking, lower PAC score, higher mean silhouette score or higher
@@ -9841,12 +9851,14 @@ get_stats(res)
 
 `suggest_best_k()` suggests the best $k$ based on these statistics. The rules are as follows:
 
-- All $k$ with Jaccard index larger than 0.95 are removed because the increase of
-  the partition number does not provides enough extra information. If all $k$ are removed,
-  the best $k$ is assigned by `NA`.
-- For $k$ with 1-PAC larger than 0.9, the maximal $k$ is taken as the "best k". Other $k$ is called "optional k".
-- If it does not fit the second rule. The $k$ with the highest vote of highest
-  1-PAC, mean silhouette and concordance is taken as the "best k".
+- All $k$ with Jaccard index larger than 0.95 are removed because increasing
+  $k$ does not provide enough extra information. If all $k$ are removed, it is
+  marked as no subgroup is detected.
+- For all $k$ with 1-PAC score larger than 0.9, the maximal $k$ is taken as
+  the best $k$, and other $k$ are marked as optional $k$.
+- If it does not fit the second rule. The $k$ with the maximal vote of the
+  highest 1-PAC score, highest mean silhouette, and highest concordance is
+  taken as the best $k$.
 
 ```r
 suggest_best_k(res)
@@ -11176,8 +11188,8 @@ test_to_known_factors(res)
 
 
 
-If matrix rows can be associated to genes, consider to use `GO_Enrichment(res,
-...)` to perform function enrichment for the signature genes.
+If matrix rows can be associated to genes, consider to use `functional_enrichment(res,
+...)` to perform function enrichment for the signature genes. See [this vignette](http://bioconductor.org/packages/devel/bioc/vignettes/cola/inst/doc/functional_enrichment.html) for more detailed explanations.
 
 
  
@@ -11241,7 +11253,7 @@ collect_plots(res)
 
 The plots are:
 
-- The first row: a plot of the ECDF (Empirical cumulative distribution
+- The first row: a plot of the ECDF (empirical cumulative distribution
   function) curves of the consensus matrix for each `k` and the heatmap of
   predicted classes for each `k`.
 - The second row: heatmaps of the consensus matrix for each `k`.
@@ -11269,7 +11281,7 @@ statistics for choosing "optimized" `k`. There are following statistics:
   the partition of k and k-1 and the pairs of samples are both in a same
   cluster in the partition k or k-1.
 
-The detailed explanations of these statistics can be found in [the cola
+The detailed explanations of these statistics can be found in [the _cola_
 vignette](http://bioconductor.org/packages/devel/bioc/vignettes/cola/inst/doc/cola.html#toc_13).
 
 Generally speaking, lower PAC score, higher mean silhouette score or higher
@@ -11300,12 +11312,14 @@ get_stats(res)
 
 `suggest_best_k()` suggests the best $k$ based on these statistics. The rules are as follows:
 
-- All $k$ with Jaccard index larger than 0.95 are removed because the increase of
-  the partition number does not provides enough extra information. If all $k$ are removed,
-  the best $k$ is assigned by `NA`.
-- For $k$ with 1-PAC larger than 0.9, the maximal $k$ is taken as the "best k". Other $k$ is called "optional k".
-- If it does not fit the second rule. The $k$ with the highest vote of highest
-  1-PAC, mean silhouette and concordance is taken as the "best k".
+- All $k$ with Jaccard index larger than 0.95 are removed because increasing
+  $k$ does not provide enough extra information. If all $k$ are removed, it is
+  marked as no subgroup is detected.
+- For all $k$ with 1-PAC score larger than 0.9, the maximal $k$ is taken as
+  the best $k$, and other $k$ are marked as optional $k$.
+- If it does not fit the second rule. The $k$ with the maximal vote of the
+  highest 1-PAC score, highest mean silhouette, and highest concordance is
+  taken as the best $k$.
 
 ```r
 suggest_best_k(res)
@@ -12635,8 +12649,8 @@ test_to_known_factors(res)
 
 
 
-If matrix rows can be associated to genes, consider to use `GO_Enrichment(res,
-...)` to perform function enrichment for the signature genes.
+If matrix rows can be associated to genes, consider to use `functional_enrichment(res,
+...)` to perform function enrichment for the signature genes. See [this vignette](http://bioconductor.org/packages/devel/bioc/vignettes/cola/inst/doc/functional_enrichment.html) for more detailed explanations.
 
 
  
@@ -12700,7 +12714,7 @@ collect_plots(res)
 
 The plots are:
 
-- The first row: a plot of the ECDF (Empirical cumulative distribution
+- The first row: a plot of the ECDF (empirical cumulative distribution
   function) curves of the consensus matrix for each `k` and the heatmap of
   predicted classes for each `k`.
 - The second row: heatmaps of the consensus matrix for each `k`.
@@ -12728,7 +12742,7 @@ statistics for choosing "optimized" `k`. There are following statistics:
   the partition of k and k-1 and the pairs of samples are both in a same
   cluster in the partition k or k-1.
 
-The detailed explanations of these statistics can be found in [the cola
+The detailed explanations of these statistics can be found in [the _cola_
 vignette](http://bioconductor.org/packages/devel/bioc/vignettes/cola/inst/doc/cola.html#toc_13).
 
 Generally speaking, lower PAC score, higher mean silhouette score or higher
@@ -12759,12 +12773,14 @@ get_stats(res)
 
 `suggest_best_k()` suggests the best $k$ based on these statistics. The rules are as follows:
 
-- All $k$ with Jaccard index larger than 0.95 are removed because the increase of
-  the partition number does not provides enough extra information. If all $k$ are removed,
-  the best $k$ is assigned by `NA`.
-- For $k$ with 1-PAC larger than 0.9, the maximal $k$ is taken as the "best k". Other $k$ is called "optional k".
-- If it does not fit the second rule. The $k$ with the highest vote of highest
-  1-PAC, mean silhouette and concordance is taken as the "best k".
+- All $k$ with Jaccard index larger than 0.95 are removed because increasing
+  $k$ does not provide enough extra information. If all $k$ are removed, it is
+  marked as no subgroup is detected.
+- For all $k$ with 1-PAC score larger than 0.9, the maximal $k$ is taken as
+  the best $k$, and other $k$ are marked as optional $k$.
+- If it does not fit the second rule. The $k$ with the maximal vote of the
+  highest 1-PAC score, highest mean silhouette, and highest concordance is
+  taken as the best $k$.
 
 ```r
 suggest_best_k(res)
@@ -14094,8 +14110,8 @@ test_to_known_factors(res)
 
 
 
-If matrix rows can be associated to genes, consider to use `GO_Enrichment(res,
-...)` to perform function enrichment for the signature genes.
+If matrix rows can be associated to genes, consider to use `functional_enrichment(res,
+...)` to perform function enrichment for the signature genes. See [this vignette](http://bioconductor.org/packages/devel/bioc/vignettes/cola/inst/doc/functional_enrichment.html) for more detailed explanations.
 
 
  
@@ -14159,7 +14175,7 @@ collect_plots(res)
 
 The plots are:
 
-- The first row: a plot of the ECDF (Empirical cumulative distribution
+- The first row: a plot of the ECDF (empirical cumulative distribution
   function) curves of the consensus matrix for each `k` and the heatmap of
   predicted classes for each `k`.
 - The second row: heatmaps of the consensus matrix for each `k`.
@@ -14187,7 +14203,7 @@ statistics for choosing "optimized" `k`. There are following statistics:
   the partition of k and k-1 and the pairs of samples are both in a same
   cluster in the partition k or k-1.
 
-The detailed explanations of these statistics can be found in [the cola
+The detailed explanations of these statistics can be found in [the _cola_
 vignette](http://bioconductor.org/packages/devel/bioc/vignettes/cola/inst/doc/cola.html#toc_13).
 
 Generally speaking, lower PAC score, higher mean silhouette score or higher
@@ -14218,12 +14234,14 @@ get_stats(res)
 
 `suggest_best_k()` suggests the best $k$ based on these statistics. The rules are as follows:
 
-- All $k$ with Jaccard index larger than 0.95 are removed because the increase of
-  the partition number does not provides enough extra information. If all $k$ are removed,
-  the best $k$ is assigned by `NA`.
-- For $k$ with 1-PAC larger than 0.9, the maximal $k$ is taken as the "best k". Other $k$ is called "optional k".
-- If it does not fit the second rule. The $k$ with the highest vote of highest
-  1-PAC, mean silhouette and concordance is taken as the "best k".
+- All $k$ with Jaccard index larger than 0.95 are removed because increasing
+  $k$ does not provide enough extra information. If all $k$ are removed, it is
+  marked as no subgroup is detected.
+- For all $k$ with 1-PAC score larger than 0.9, the maximal $k$ is taken as
+  the best $k$, and other $k$ are marked as optional $k$.
+- If it does not fit the second rule. The $k$ with the maximal vote of the
+  highest 1-PAC score, highest mean silhouette, and highest concordance is
+  taken as the best $k$.
 
 ```r
 suggest_best_k(res)
@@ -15553,8 +15571,8 @@ test_to_known_factors(res)
 
 
 
-If matrix rows can be associated to genes, consider to use `GO_Enrichment(res,
-...)` to perform function enrichment for the signature genes.
+If matrix rows can be associated to genes, consider to use `functional_enrichment(res,
+...)` to perform function enrichment for the signature genes. See [this vignette](http://bioconductor.org/packages/devel/bioc/vignettes/cola/inst/doc/functional_enrichment.html) for more detailed explanations.
 
 
  
@@ -15618,7 +15636,7 @@ collect_plots(res)
 
 The plots are:
 
-- The first row: a plot of the ECDF (Empirical cumulative distribution
+- The first row: a plot of the ECDF (empirical cumulative distribution
   function) curves of the consensus matrix for each `k` and the heatmap of
   predicted classes for each `k`.
 - The second row: heatmaps of the consensus matrix for each `k`.
@@ -15646,7 +15664,7 @@ statistics for choosing "optimized" `k`. There are following statistics:
   the partition of k and k-1 and the pairs of samples are both in a same
   cluster in the partition k or k-1.
 
-The detailed explanations of these statistics can be found in [the cola
+The detailed explanations of these statistics can be found in [the _cola_
 vignette](http://bioconductor.org/packages/devel/bioc/vignettes/cola/inst/doc/cola.html#toc_13).
 
 Generally speaking, lower PAC score, higher mean silhouette score or higher
@@ -15677,12 +15695,14 @@ get_stats(res)
 
 `suggest_best_k()` suggests the best $k$ based on these statistics. The rules are as follows:
 
-- All $k$ with Jaccard index larger than 0.95 are removed because the increase of
-  the partition number does not provides enough extra information. If all $k$ are removed,
-  the best $k$ is assigned by `NA`.
-- For $k$ with 1-PAC larger than 0.9, the maximal $k$ is taken as the "best k". Other $k$ is called "optional k".
-- If it does not fit the second rule. The $k$ with the highest vote of highest
-  1-PAC, mean silhouette and concordance is taken as the "best k".
+- All $k$ with Jaccard index larger than 0.95 are removed because increasing
+  $k$ does not provide enough extra information. If all $k$ are removed, it is
+  marked as no subgroup is detected.
+- For all $k$ with 1-PAC score larger than 0.9, the maximal $k$ is taken as
+  the best $k$, and other $k$ are marked as optional $k$.
+- If it does not fit the second rule. The $k$ with the maximal vote of the
+  highest 1-PAC score, highest mean silhouette, and highest concordance is
+  taken as the best $k$.
 
 ```r
 suggest_best_k(res)
@@ -17012,8 +17032,8 @@ test_to_known_factors(res)
 
 
 
-If matrix rows can be associated to genes, consider to use `GO_Enrichment(res,
-...)` to perform function enrichment for the signature genes.
+If matrix rows can be associated to genes, consider to use `functional_enrichment(res,
+...)` to perform function enrichment for the signature genes. See [this vignette](http://bioconductor.org/packages/devel/bioc/vignettes/cola/inst/doc/functional_enrichment.html) for more detailed explanations.
 
 
  
@@ -17077,7 +17097,7 @@ collect_plots(res)
 
 The plots are:
 
-- The first row: a plot of the ECDF (Empirical cumulative distribution
+- The first row: a plot of the ECDF (empirical cumulative distribution
   function) curves of the consensus matrix for each `k` and the heatmap of
   predicted classes for each `k`.
 - The second row: heatmaps of the consensus matrix for each `k`.
@@ -17105,7 +17125,7 @@ statistics for choosing "optimized" `k`. There are following statistics:
   the partition of k and k-1 and the pairs of samples are both in a same
   cluster in the partition k or k-1.
 
-The detailed explanations of these statistics can be found in [the cola
+The detailed explanations of these statistics can be found in [the _cola_
 vignette](http://bioconductor.org/packages/devel/bioc/vignettes/cola/inst/doc/cola.html#toc_13).
 
 Generally speaking, lower PAC score, higher mean silhouette score or higher
@@ -17136,12 +17156,14 @@ get_stats(res)
 
 `suggest_best_k()` suggests the best $k$ based on these statistics. The rules are as follows:
 
-- All $k$ with Jaccard index larger than 0.95 are removed because the increase of
-  the partition number does not provides enough extra information. If all $k$ are removed,
-  the best $k$ is assigned by `NA`.
-- For $k$ with 1-PAC larger than 0.9, the maximal $k$ is taken as the "best k". Other $k$ is called "optional k".
-- If it does not fit the second rule. The $k$ with the highest vote of highest
-  1-PAC, mean silhouette and concordance is taken as the "best k".
+- All $k$ with Jaccard index larger than 0.95 are removed because increasing
+  $k$ does not provide enough extra information. If all $k$ are removed, it is
+  marked as no subgroup is detected.
+- For all $k$ with 1-PAC score larger than 0.9, the maximal $k$ is taken as
+  the best $k$, and other $k$ are marked as optional $k$.
+- If it does not fit the second rule. The $k$ with the maximal vote of the
+  highest 1-PAC score, highest mean silhouette, and highest concordance is
+  taken as the best $k$.
 
 ```r
 suggest_best_k(res)
@@ -18471,8 +18493,8 @@ test_to_known_factors(res)
 
 
 
-If matrix rows can be associated to genes, consider to use `GO_Enrichment(res,
-...)` to perform function enrichment for the signature genes.
+If matrix rows can be associated to genes, consider to use `functional_enrichment(res,
+...)` to perform function enrichment for the signature genes. See [this vignette](http://bioconductor.org/packages/devel/bioc/vignettes/cola/inst/doc/functional_enrichment.html) for more detailed explanations.
 
 
  
@@ -18536,7 +18558,7 @@ collect_plots(res)
 
 The plots are:
 
-- The first row: a plot of the ECDF (Empirical cumulative distribution
+- The first row: a plot of the ECDF (empirical cumulative distribution
   function) curves of the consensus matrix for each `k` and the heatmap of
   predicted classes for each `k`.
 - The second row: heatmaps of the consensus matrix for each `k`.
@@ -18564,7 +18586,7 @@ statistics for choosing "optimized" `k`. There are following statistics:
   the partition of k and k-1 and the pairs of samples are both in a same
   cluster in the partition k or k-1.
 
-The detailed explanations of these statistics can be found in [the cola
+The detailed explanations of these statistics can be found in [the _cola_
 vignette](http://bioconductor.org/packages/devel/bioc/vignettes/cola/inst/doc/cola.html#toc_13).
 
 Generally speaking, lower PAC score, higher mean silhouette score or higher
@@ -18595,12 +18617,14 @@ get_stats(res)
 
 `suggest_best_k()` suggests the best $k$ based on these statistics. The rules are as follows:
 
-- All $k$ with Jaccard index larger than 0.95 are removed because the increase of
-  the partition number does not provides enough extra information. If all $k$ are removed,
-  the best $k$ is assigned by `NA`.
-- For $k$ with 1-PAC larger than 0.9, the maximal $k$ is taken as the "best k". Other $k$ is called "optional k".
-- If it does not fit the second rule. The $k$ with the highest vote of highest
-  1-PAC, mean silhouette and concordance is taken as the "best k".
+- All $k$ with Jaccard index larger than 0.95 are removed because increasing
+  $k$ does not provide enough extra information. If all $k$ are removed, it is
+  marked as no subgroup is detected.
+- For all $k$ with 1-PAC score larger than 0.9, the maximal $k$ is taken as
+  the best $k$, and other $k$ are marked as optional $k$.
+- If it does not fit the second rule. The $k$ with the maximal vote of the
+  highest 1-PAC score, highest mean silhouette, and highest concordance is
+  taken as the best $k$.
 
 ```r
 suggest_best_k(res)
@@ -19930,8 +19954,8 @@ test_to_known_factors(res)
 
 
 
-If matrix rows can be associated to genes, consider to use `GO_Enrichment(res,
-...)` to perform function enrichment for the signature genes.
+If matrix rows can be associated to genes, consider to use `functional_enrichment(res,
+...)` to perform function enrichment for the signature genes. See [this vignette](http://bioconductor.org/packages/devel/bioc/vignettes/cola/inst/doc/functional_enrichment.html) for more detailed explanations.
 
 
  
@@ -19995,7 +20019,7 @@ collect_plots(res)
 
 The plots are:
 
-- The first row: a plot of the ECDF (Empirical cumulative distribution
+- The first row: a plot of the ECDF (empirical cumulative distribution
   function) curves of the consensus matrix for each `k` and the heatmap of
   predicted classes for each `k`.
 - The second row: heatmaps of the consensus matrix for each `k`.
@@ -20023,7 +20047,7 @@ statistics for choosing "optimized" `k`. There are following statistics:
   the partition of k and k-1 and the pairs of samples are both in a same
   cluster in the partition k or k-1.
 
-The detailed explanations of these statistics can be found in [the cola
+The detailed explanations of these statistics can be found in [the _cola_
 vignette](http://bioconductor.org/packages/devel/bioc/vignettes/cola/inst/doc/cola.html#toc_13).
 
 Generally speaking, lower PAC score, higher mean silhouette score or higher
@@ -20054,12 +20078,14 @@ get_stats(res)
 
 `suggest_best_k()` suggests the best $k$ based on these statistics. The rules are as follows:
 
-- All $k$ with Jaccard index larger than 0.95 are removed because the increase of
-  the partition number does not provides enough extra information. If all $k$ are removed,
-  the best $k$ is assigned by `NA`.
-- For $k$ with 1-PAC larger than 0.9, the maximal $k$ is taken as the "best k". Other $k$ is called "optional k".
-- If it does not fit the second rule. The $k$ with the highest vote of highest
-  1-PAC, mean silhouette and concordance is taken as the "best k".
+- All $k$ with Jaccard index larger than 0.95 are removed because increasing
+  $k$ does not provide enough extra information. If all $k$ are removed, it is
+  marked as no subgroup is detected.
+- For all $k$ with 1-PAC score larger than 0.9, the maximal $k$ is taken as
+  the best $k$, and other $k$ are marked as optional $k$.
+- If it does not fit the second rule. The $k$ with the maximal vote of the
+  highest 1-PAC score, highest mean silhouette, and highest concordance is
+  taken as the best $k$.
 
 ```r
 suggest_best_k(res)
@@ -21389,8 +21415,8 @@ test_to_known_factors(res)
 
 
 
-If matrix rows can be associated to genes, consider to use `GO_Enrichment(res,
-...)` to perform function enrichment for the signature genes.
+If matrix rows can be associated to genes, consider to use `functional_enrichment(res,
+...)` to perform function enrichment for the signature genes. See [this vignette](http://bioconductor.org/packages/devel/bioc/vignettes/cola/inst/doc/functional_enrichment.html) for more detailed explanations.
 
 
  
@@ -21454,7 +21480,7 @@ collect_plots(res)
 
 The plots are:
 
-- The first row: a plot of the ECDF (Empirical cumulative distribution
+- The first row: a plot of the ECDF (empirical cumulative distribution
   function) curves of the consensus matrix for each `k` and the heatmap of
   predicted classes for each `k`.
 - The second row: heatmaps of the consensus matrix for each `k`.
@@ -21482,7 +21508,7 @@ statistics for choosing "optimized" `k`. There are following statistics:
   the partition of k and k-1 and the pairs of samples are both in a same
   cluster in the partition k or k-1.
 
-The detailed explanations of these statistics can be found in [the cola
+The detailed explanations of these statistics can be found in [the _cola_
 vignette](http://bioconductor.org/packages/devel/bioc/vignettes/cola/inst/doc/cola.html#toc_13).
 
 Generally speaking, lower PAC score, higher mean silhouette score or higher
@@ -21513,12 +21539,14 @@ get_stats(res)
 
 `suggest_best_k()` suggests the best $k$ based on these statistics. The rules are as follows:
 
-- All $k$ with Jaccard index larger than 0.95 are removed because the increase of
-  the partition number does not provides enough extra information. If all $k$ are removed,
-  the best $k$ is assigned by `NA`.
-- For $k$ with 1-PAC larger than 0.9, the maximal $k$ is taken as the "best k". Other $k$ is called "optional k".
-- If it does not fit the second rule. The $k$ with the highest vote of highest
-  1-PAC, mean silhouette and concordance is taken as the "best k".
+- All $k$ with Jaccard index larger than 0.95 are removed because increasing
+  $k$ does not provide enough extra information. If all $k$ are removed, it is
+  marked as no subgroup is detected.
+- For all $k$ with 1-PAC score larger than 0.9, the maximal $k$ is taken as
+  the best $k$, and other $k$ are marked as optional $k$.
+- If it does not fit the second rule. The $k$ with the maximal vote of the
+  highest 1-PAC score, highest mean silhouette, and highest concordance is
+  taken as the best $k$.
 
 ```r
 suggest_best_k(res)
@@ -22848,8 +22876,8 @@ test_to_known_factors(res)
 
 
 
-If matrix rows can be associated to genes, consider to use `GO_Enrichment(res,
-...)` to perform function enrichment for the signature genes.
+If matrix rows can be associated to genes, consider to use `functional_enrichment(res,
+...)` to perform function enrichment for the signature genes. See [this vignette](http://bioconductor.org/packages/devel/bioc/vignettes/cola/inst/doc/functional_enrichment.html) for more detailed explanations.
 
 
  
@@ -22913,7 +22941,7 @@ collect_plots(res)
 
 The plots are:
 
-- The first row: a plot of the ECDF (Empirical cumulative distribution
+- The first row: a plot of the ECDF (empirical cumulative distribution
   function) curves of the consensus matrix for each `k` and the heatmap of
   predicted classes for each `k`.
 - The second row: heatmaps of the consensus matrix for each `k`.
@@ -22941,7 +22969,7 @@ statistics for choosing "optimized" `k`. There are following statistics:
   the partition of k and k-1 and the pairs of samples are both in a same
   cluster in the partition k or k-1.
 
-The detailed explanations of these statistics can be found in [the cola
+The detailed explanations of these statistics can be found in [the _cola_
 vignette](http://bioconductor.org/packages/devel/bioc/vignettes/cola/inst/doc/cola.html#toc_13).
 
 Generally speaking, lower PAC score, higher mean silhouette score or higher
@@ -22972,12 +23000,14 @@ get_stats(res)
 
 `suggest_best_k()` suggests the best $k$ based on these statistics. The rules are as follows:
 
-- All $k$ with Jaccard index larger than 0.95 are removed because the increase of
-  the partition number does not provides enough extra information. If all $k$ are removed,
-  the best $k$ is assigned by `NA`.
-- For $k$ with 1-PAC larger than 0.9, the maximal $k$ is taken as the "best k". Other $k$ is called "optional k".
-- If it does not fit the second rule. The $k$ with the highest vote of highest
-  1-PAC, mean silhouette and concordance is taken as the "best k".
+- All $k$ with Jaccard index larger than 0.95 are removed because increasing
+  $k$ does not provide enough extra information. If all $k$ are removed, it is
+  marked as no subgroup is detected.
+- For all $k$ with 1-PAC score larger than 0.9, the maximal $k$ is taken as
+  the best $k$, and other $k$ are marked as optional $k$.
+- If it does not fit the second rule. The $k$ with the maximal vote of the
+  highest 1-PAC score, highest mean silhouette, and highest concordance is
+  taken as the best $k$.
 
 ```r
 suggest_best_k(res)
@@ -24307,8 +24337,8 @@ test_to_known_factors(res)
 
 
 
-If matrix rows can be associated to genes, consider to use `GO_Enrichment(res,
-...)` to perform function enrichment for the signature genes.
+If matrix rows can be associated to genes, consider to use `functional_enrichment(res,
+...)` to perform function enrichment for the signature genes. See [this vignette](http://bioconductor.org/packages/devel/bioc/vignettes/cola/inst/doc/functional_enrichment.html) for more detailed explanations.
 
 
  
@@ -24372,7 +24402,7 @@ collect_plots(res)
 
 The plots are:
 
-- The first row: a plot of the ECDF (Empirical cumulative distribution
+- The first row: a plot of the ECDF (empirical cumulative distribution
   function) curves of the consensus matrix for each `k` and the heatmap of
   predicted classes for each `k`.
 - The second row: heatmaps of the consensus matrix for each `k`.
@@ -24400,7 +24430,7 @@ statistics for choosing "optimized" `k`. There are following statistics:
   the partition of k and k-1 and the pairs of samples are both in a same
   cluster in the partition k or k-1.
 
-The detailed explanations of these statistics can be found in [the cola
+The detailed explanations of these statistics can be found in [the _cola_
 vignette](http://bioconductor.org/packages/devel/bioc/vignettes/cola/inst/doc/cola.html#toc_13).
 
 Generally speaking, lower PAC score, higher mean silhouette score or higher
@@ -24431,12 +24461,14 @@ get_stats(res)
 
 `suggest_best_k()` suggests the best $k$ based on these statistics. The rules are as follows:
 
-- All $k$ with Jaccard index larger than 0.95 are removed because the increase of
-  the partition number does not provides enough extra information. If all $k$ are removed,
-  the best $k$ is assigned by `NA`.
-- For $k$ with 1-PAC larger than 0.9, the maximal $k$ is taken as the "best k". Other $k$ is called "optional k".
-- If it does not fit the second rule. The $k$ with the highest vote of highest
-  1-PAC, mean silhouette and concordance is taken as the "best k".
+- All $k$ with Jaccard index larger than 0.95 are removed because increasing
+  $k$ does not provide enough extra information. If all $k$ are removed, it is
+  marked as no subgroup is detected.
+- For all $k$ with 1-PAC score larger than 0.9, the maximal $k$ is taken as
+  the best $k$, and other $k$ are marked as optional $k$.
+- If it does not fit the second rule. The $k$ with the maximal vote of the
+  highest 1-PAC score, highest mean silhouette, and highest concordance is
+  taken as the best $k$.
 
 ```r
 suggest_best_k(res)
@@ -25766,8 +25798,8 @@ test_to_known_factors(res)
 
 
 
-If matrix rows can be associated to genes, consider to use `GO_Enrichment(res,
-...)` to perform function enrichment for the signature genes.
+If matrix rows can be associated to genes, consider to use `functional_enrichment(res,
+...)` to perform function enrichment for the signature genes. See [this vignette](http://bioconductor.org/packages/devel/bioc/vignettes/cola/inst/doc/functional_enrichment.html) for more detailed explanations.
 
 
  
@@ -25831,7 +25863,7 @@ collect_plots(res)
 
 The plots are:
 
-- The first row: a plot of the ECDF (Empirical cumulative distribution
+- The first row: a plot of the ECDF (empirical cumulative distribution
   function) curves of the consensus matrix for each `k` and the heatmap of
   predicted classes for each `k`.
 - The second row: heatmaps of the consensus matrix for each `k`.
@@ -25859,7 +25891,7 @@ statistics for choosing "optimized" `k`. There are following statistics:
   the partition of k and k-1 and the pairs of samples are both in a same
   cluster in the partition k or k-1.
 
-The detailed explanations of these statistics can be found in [the cola
+The detailed explanations of these statistics can be found in [the _cola_
 vignette](http://bioconductor.org/packages/devel/bioc/vignettes/cola/inst/doc/cola.html#toc_13).
 
 Generally speaking, lower PAC score, higher mean silhouette score or higher
@@ -25890,12 +25922,14 @@ get_stats(res)
 
 `suggest_best_k()` suggests the best $k$ based on these statistics. The rules are as follows:
 
-- All $k$ with Jaccard index larger than 0.95 are removed because the increase of
-  the partition number does not provides enough extra information. If all $k$ are removed,
-  the best $k$ is assigned by `NA`.
-- For $k$ with 1-PAC larger than 0.9, the maximal $k$ is taken as the "best k". Other $k$ is called "optional k".
-- If it does not fit the second rule. The $k$ with the highest vote of highest
-  1-PAC, mean silhouette and concordance is taken as the "best k".
+- All $k$ with Jaccard index larger than 0.95 are removed because increasing
+  $k$ does not provide enough extra information. If all $k$ are removed, it is
+  marked as no subgroup is detected.
+- For all $k$ with 1-PAC score larger than 0.9, the maximal $k$ is taken as
+  the best $k$, and other $k$ are marked as optional $k$.
+- If it does not fit the second rule. The $k$ with the maximal vote of the
+  highest 1-PAC score, highest mean silhouette, and highest concordance is
+  taken as the best $k$.
 
 ```r
 suggest_best_k(res)
@@ -27225,8 +27259,8 @@ test_to_known_factors(res)
 
 
 
-If matrix rows can be associated to genes, consider to use `GO_Enrichment(res,
-...)` to perform function enrichment for the signature genes.
+If matrix rows can be associated to genes, consider to use `functional_enrichment(res,
+...)` to perform function enrichment for the signature genes. See [this vignette](http://bioconductor.org/packages/devel/bioc/vignettes/cola/inst/doc/functional_enrichment.html) for more detailed explanations.
 
 
  
@@ -27290,7 +27324,7 @@ collect_plots(res)
 
 The plots are:
 
-- The first row: a plot of the ECDF (Empirical cumulative distribution
+- The first row: a plot of the ECDF (empirical cumulative distribution
   function) curves of the consensus matrix for each `k` and the heatmap of
   predicted classes for each `k`.
 - The second row: heatmaps of the consensus matrix for each `k`.
@@ -27318,7 +27352,7 @@ statistics for choosing "optimized" `k`. There are following statistics:
   the partition of k and k-1 and the pairs of samples are both in a same
   cluster in the partition k or k-1.
 
-The detailed explanations of these statistics can be found in [the cola
+The detailed explanations of these statistics can be found in [the _cola_
 vignette](http://bioconductor.org/packages/devel/bioc/vignettes/cola/inst/doc/cola.html#toc_13).
 
 Generally speaking, lower PAC score, higher mean silhouette score or higher
@@ -27349,12 +27383,14 @@ get_stats(res)
 
 `suggest_best_k()` suggests the best $k$ based on these statistics. The rules are as follows:
 
-- All $k$ with Jaccard index larger than 0.95 are removed because the increase of
-  the partition number does not provides enough extra information. If all $k$ are removed,
-  the best $k$ is assigned by `NA`.
-- For $k$ with 1-PAC larger than 0.9, the maximal $k$ is taken as the "best k". Other $k$ is called "optional k".
-- If it does not fit the second rule. The $k$ with the highest vote of highest
-  1-PAC, mean silhouette and concordance is taken as the "best k".
+- All $k$ with Jaccard index larger than 0.95 are removed because increasing
+  $k$ does not provide enough extra information. If all $k$ are removed, it is
+  marked as no subgroup is detected.
+- For all $k$ with 1-PAC score larger than 0.9, the maximal $k$ is taken as
+  the best $k$, and other $k$ are marked as optional $k$.
+- If it does not fit the second rule. The $k$ with the maximal vote of the
+  highest 1-PAC score, highest mean silhouette, and highest concordance is
+  taken as the best $k$.
 
 ```r
 suggest_best_k(res)
@@ -28684,8 +28720,8 @@ test_to_known_factors(res)
 
 
 
-If matrix rows can be associated to genes, consider to use `GO_Enrichment(res,
-...)` to perform function enrichment for the signature genes.
+If matrix rows can be associated to genes, consider to use `functional_enrichment(res,
+...)` to perform function enrichment for the signature genes. See [this vignette](http://bioconductor.org/packages/devel/bioc/vignettes/cola/inst/doc/functional_enrichment.html) for more detailed explanations.
 
 
  
@@ -28749,7 +28785,7 @@ collect_plots(res)
 
 The plots are:
 
-- The first row: a plot of the ECDF (Empirical cumulative distribution
+- The first row: a plot of the ECDF (empirical cumulative distribution
   function) curves of the consensus matrix for each `k` and the heatmap of
   predicted classes for each `k`.
 - The second row: heatmaps of the consensus matrix for each `k`.
@@ -28777,7 +28813,7 @@ statistics for choosing "optimized" `k`. There are following statistics:
   the partition of k and k-1 and the pairs of samples are both in a same
   cluster in the partition k or k-1.
 
-The detailed explanations of these statistics can be found in [the cola
+The detailed explanations of these statistics can be found in [the _cola_
 vignette](http://bioconductor.org/packages/devel/bioc/vignettes/cola/inst/doc/cola.html#toc_13).
 
 Generally speaking, lower PAC score, higher mean silhouette score or higher
@@ -28808,12 +28844,14 @@ get_stats(res)
 
 `suggest_best_k()` suggests the best $k$ based on these statistics. The rules are as follows:
 
-- All $k$ with Jaccard index larger than 0.95 are removed because the increase of
-  the partition number does not provides enough extra information. If all $k$ are removed,
-  the best $k$ is assigned by `NA`.
-- For $k$ with 1-PAC larger than 0.9, the maximal $k$ is taken as the "best k". Other $k$ is called "optional k".
-- If it does not fit the second rule. The $k$ with the highest vote of highest
-  1-PAC, mean silhouette and concordance is taken as the "best k".
+- All $k$ with Jaccard index larger than 0.95 are removed because increasing
+  $k$ does not provide enough extra information. If all $k$ are removed, it is
+  marked as no subgroup is detected.
+- For all $k$ with 1-PAC score larger than 0.9, the maximal $k$ is taken as
+  the best $k$, and other $k$ are marked as optional $k$.
+- If it does not fit the second rule. The $k$ with the maximal vote of the
+  highest 1-PAC score, highest mean silhouette, and highest concordance is
+  taken as the best $k$.
 
 ```r
 suggest_best_k(res)
@@ -30143,8 +30181,8 @@ test_to_known_factors(res)
 
 
 
-If matrix rows can be associated to genes, consider to use `GO_Enrichment(res,
-...)` to perform function enrichment for the signature genes.
+If matrix rows can be associated to genes, consider to use `functional_enrichment(res,
+...)` to perform function enrichment for the signature genes. See [this vignette](http://bioconductor.org/packages/devel/bioc/vignettes/cola/inst/doc/functional_enrichment.html) for more detailed explanations.
 
 
  
@@ -30208,7 +30246,7 @@ collect_plots(res)
 
 The plots are:
 
-- The first row: a plot of the ECDF (Empirical cumulative distribution
+- The first row: a plot of the ECDF (empirical cumulative distribution
   function) curves of the consensus matrix for each `k` and the heatmap of
   predicted classes for each `k`.
 - The second row: heatmaps of the consensus matrix for each `k`.
@@ -30236,7 +30274,7 @@ statistics for choosing "optimized" `k`. There are following statistics:
   the partition of k and k-1 and the pairs of samples are both in a same
   cluster in the partition k or k-1.
 
-The detailed explanations of these statistics can be found in [the cola
+The detailed explanations of these statistics can be found in [the _cola_
 vignette](http://bioconductor.org/packages/devel/bioc/vignettes/cola/inst/doc/cola.html#toc_13).
 
 Generally speaking, lower PAC score, higher mean silhouette score or higher
@@ -30267,12 +30305,14 @@ get_stats(res)
 
 `suggest_best_k()` suggests the best $k$ based on these statistics. The rules are as follows:
 
-- All $k$ with Jaccard index larger than 0.95 are removed because the increase of
-  the partition number does not provides enough extra information. If all $k$ are removed,
-  the best $k$ is assigned by `NA`.
-- For $k$ with 1-PAC larger than 0.9, the maximal $k$ is taken as the "best k". Other $k$ is called "optional k".
-- If it does not fit the second rule. The $k$ with the highest vote of highest
-  1-PAC, mean silhouette and concordance is taken as the "best k".
+- All $k$ with Jaccard index larger than 0.95 are removed because increasing
+  $k$ does not provide enough extra information. If all $k$ are removed, it is
+  marked as no subgroup is detected.
+- For all $k$ with 1-PAC score larger than 0.9, the maximal $k$ is taken as
+  the best $k$, and other $k$ are marked as optional $k$.
+- If it does not fit the second rule. The $k$ with the maximal vote of the
+  highest 1-PAC score, highest mean silhouette, and highest concordance is
+  taken as the best $k$.
 
 ```r
 suggest_best_k(res)
@@ -31602,8 +31642,8 @@ test_to_known_factors(res)
 
 
 
-If matrix rows can be associated to genes, consider to use `GO_Enrichment(res,
-...)` to perform function enrichment for the signature genes.
+If matrix rows can be associated to genes, consider to use `functional_enrichment(res,
+...)` to perform function enrichment for the signature genes. See [this vignette](http://bioconductor.org/packages/devel/bioc/vignettes/cola/inst/doc/functional_enrichment.html) for more detailed explanations.
 
 
  
@@ -31667,7 +31707,7 @@ collect_plots(res)
 
 The plots are:
 
-- The first row: a plot of the ECDF (Empirical cumulative distribution
+- The first row: a plot of the ECDF (empirical cumulative distribution
   function) curves of the consensus matrix for each `k` and the heatmap of
   predicted classes for each `k`.
 - The second row: heatmaps of the consensus matrix for each `k`.
@@ -31695,7 +31735,7 @@ statistics for choosing "optimized" `k`. There are following statistics:
   the partition of k and k-1 and the pairs of samples are both in a same
   cluster in the partition k or k-1.
 
-The detailed explanations of these statistics can be found in [the cola
+The detailed explanations of these statistics can be found in [the _cola_
 vignette](http://bioconductor.org/packages/devel/bioc/vignettes/cola/inst/doc/cola.html#toc_13).
 
 Generally speaking, lower PAC score, higher mean silhouette score or higher
@@ -31726,12 +31766,14 @@ get_stats(res)
 
 `suggest_best_k()` suggests the best $k$ based on these statistics. The rules are as follows:
 
-- All $k$ with Jaccard index larger than 0.95 are removed because the increase of
-  the partition number does not provides enough extra information. If all $k$ are removed,
-  the best $k$ is assigned by `NA`.
-- For $k$ with 1-PAC larger than 0.9, the maximal $k$ is taken as the "best k". Other $k$ is called "optional k".
-- If it does not fit the second rule. The $k$ with the highest vote of highest
-  1-PAC, mean silhouette and concordance is taken as the "best k".
+- All $k$ with Jaccard index larger than 0.95 are removed because increasing
+  $k$ does not provide enough extra information. If all $k$ are removed, it is
+  marked as no subgroup is detected.
+- For all $k$ with 1-PAC score larger than 0.9, the maximal $k$ is taken as
+  the best $k$, and other $k$ are marked as optional $k$.
+- If it does not fit the second rule. The $k$ with the maximal vote of the
+  highest 1-PAC score, highest mean silhouette, and highest concordance is
+  taken as the best $k$.
 
 ```r
 suggest_best_k(res)
@@ -33064,8 +33106,8 @@ test_to_known_factors(res)
 
 
 
-If matrix rows can be associated to genes, consider to use `GO_Enrichment(res,
-...)` to perform function enrichment for the signature genes.
+If matrix rows can be associated to genes, consider to use `functional_enrichment(res,
+...)` to perform function enrichment for the signature genes. See [this vignette](http://bioconductor.org/packages/devel/bioc/vignettes/cola/inst/doc/functional_enrichment.html) for more detailed explanations.
 
 
  
@@ -33129,7 +33171,7 @@ collect_plots(res)
 
 The plots are:
 
-- The first row: a plot of the ECDF (Empirical cumulative distribution
+- The first row: a plot of the ECDF (empirical cumulative distribution
   function) curves of the consensus matrix for each `k` and the heatmap of
   predicted classes for each `k`.
 - The second row: heatmaps of the consensus matrix for each `k`.
@@ -33157,7 +33199,7 @@ statistics for choosing "optimized" `k`. There are following statistics:
   the partition of k and k-1 and the pairs of samples are both in a same
   cluster in the partition k or k-1.
 
-The detailed explanations of these statistics can be found in [the cola
+The detailed explanations of these statistics can be found in [the _cola_
 vignette](http://bioconductor.org/packages/devel/bioc/vignettes/cola/inst/doc/cola.html#toc_13).
 
 Generally speaking, lower PAC score, higher mean silhouette score or higher
@@ -33188,12 +33230,14 @@ get_stats(res)
 
 `suggest_best_k()` suggests the best $k$ based on these statistics. The rules are as follows:
 
-- All $k$ with Jaccard index larger than 0.95 are removed because the increase of
-  the partition number does not provides enough extra information. If all $k$ are removed,
-  the best $k$ is assigned by `NA`.
-- For $k$ with 1-PAC larger than 0.9, the maximal $k$ is taken as the "best k". Other $k$ is called "optional k".
-- If it does not fit the second rule. The $k$ with the highest vote of highest
-  1-PAC, mean silhouette and concordance is taken as the "best k".
+- All $k$ with Jaccard index larger than 0.95 are removed because increasing
+  $k$ does not provide enough extra information. If all $k$ are removed, it is
+  marked as no subgroup is detected.
+- For all $k$ with 1-PAC score larger than 0.9, the maximal $k$ is taken as
+  the best $k$, and other $k$ are marked as optional $k$.
+- If it does not fit the second rule. The $k$ with the maximal vote of the
+  highest 1-PAC score, highest mean silhouette, and highest concordance is
+  taken as the best $k$.
 
 ```r
 suggest_best_k(res)
@@ -34523,8 +34567,8 @@ test_to_known_factors(res)
 
 
 
-If matrix rows can be associated to genes, consider to use `GO_Enrichment(res,
-...)` to perform function enrichment for the signature genes.
+If matrix rows can be associated to genes, consider to use `functional_enrichment(res,
+...)` to perform function enrichment for the signature genes. See [this vignette](http://bioconductor.org/packages/devel/bioc/vignettes/cola/inst/doc/functional_enrichment.html) for more detailed explanations.
 
 
  
@@ -34588,7 +34632,7 @@ collect_plots(res)
 
 The plots are:
 
-- The first row: a plot of the ECDF (Empirical cumulative distribution
+- The first row: a plot of the ECDF (empirical cumulative distribution
   function) curves of the consensus matrix for each `k` and the heatmap of
   predicted classes for each `k`.
 - The second row: heatmaps of the consensus matrix for each `k`.
@@ -34616,7 +34660,7 @@ statistics for choosing "optimized" `k`. There are following statistics:
   the partition of k and k-1 and the pairs of samples are both in a same
   cluster in the partition k or k-1.
 
-The detailed explanations of these statistics can be found in [the cola
+The detailed explanations of these statistics can be found in [the _cola_
 vignette](http://bioconductor.org/packages/devel/bioc/vignettes/cola/inst/doc/cola.html#toc_13).
 
 Generally speaking, lower PAC score, higher mean silhouette score or higher
@@ -34647,12 +34691,14 @@ get_stats(res)
 
 `suggest_best_k()` suggests the best $k$ based on these statistics. The rules are as follows:
 
-- All $k$ with Jaccard index larger than 0.95 are removed because the increase of
-  the partition number does not provides enough extra information. If all $k$ are removed,
-  the best $k$ is assigned by `NA`.
-- For $k$ with 1-PAC larger than 0.9, the maximal $k$ is taken as the "best k". Other $k$ is called "optional k".
-- If it does not fit the second rule. The $k$ with the highest vote of highest
-  1-PAC, mean silhouette and concordance is taken as the "best k".
+- All $k$ with Jaccard index larger than 0.95 are removed because increasing
+  $k$ does not provide enough extra information. If all $k$ are removed, it is
+  marked as no subgroup is detected.
+- For all $k$ with 1-PAC score larger than 0.9, the maximal $k$ is taken as
+  the best $k$, and other $k$ are marked as optional $k$.
+- If it does not fit the second rule. The $k$ with the maximal vote of the
+  highest 1-PAC score, highest mean silhouette, and highest concordance is
+  taken as the best $k$.
 
 ```r
 suggest_best_k(res)
@@ -35982,8 +36028,8 @@ test_to_known_factors(res)
 
 
 
-If matrix rows can be associated to genes, consider to use `GO_Enrichment(res,
-...)` to perform function enrichment for the signature genes.
+If matrix rows can be associated to genes, consider to use `functional_enrichment(res,
+...)` to perform function enrichment for the signature genes. See [this vignette](http://bioconductor.org/packages/devel/bioc/vignettes/cola/inst/doc/functional_enrichment.html) for more detailed explanations.
 
 
  
@@ -36047,7 +36093,7 @@ collect_plots(res)
 
 The plots are:
 
-- The first row: a plot of the ECDF (Empirical cumulative distribution
+- The first row: a plot of the ECDF (empirical cumulative distribution
   function) curves of the consensus matrix for each `k` and the heatmap of
   predicted classes for each `k`.
 - The second row: heatmaps of the consensus matrix for each `k`.
@@ -36075,7 +36121,7 @@ statistics for choosing "optimized" `k`. There are following statistics:
   the partition of k and k-1 and the pairs of samples are both in a same
   cluster in the partition k or k-1.
 
-The detailed explanations of these statistics can be found in [the cola
+The detailed explanations of these statistics can be found in [the _cola_
 vignette](http://bioconductor.org/packages/devel/bioc/vignettes/cola/inst/doc/cola.html#toc_13).
 
 Generally speaking, lower PAC score, higher mean silhouette score or higher
@@ -36106,12 +36152,14 @@ get_stats(res)
 
 `suggest_best_k()` suggests the best $k$ based on these statistics. The rules are as follows:
 
-- All $k$ with Jaccard index larger than 0.95 are removed because the increase of
-  the partition number does not provides enough extra information. If all $k$ are removed,
-  the best $k$ is assigned by `NA`.
-- For $k$ with 1-PAC larger than 0.9, the maximal $k$ is taken as the "best k". Other $k$ is called "optional k".
-- If it does not fit the second rule. The $k$ with the highest vote of highest
-  1-PAC, mean silhouette and concordance is taken as the "best k".
+- All $k$ with Jaccard index larger than 0.95 are removed because increasing
+  $k$ does not provide enough extra information. If all $k$ are removed, it is
+  marked as no subgroup is detected.
+- For all $k$ with 1-PAC score larger than 0.9, the maximal $k$ is taken as
+  the best $k$, and other $k$ are marked as optional $k$.
+- If it does not fit the second rule. The $k$ with the maximal vote of the
+  highest 1-PAC score, highest mean silhouette, and highest concordance is
+  taken as the best $k$.
 
 ```r
 suggest_best_k(res)
@@ -37441,8 +37489,8 @@ test_to_known_factors(res)
 
 
 
-If matrix rows can be associated to genes, consider to use `GO_Enrichment(res,
-...)` to perform function enrichment for the signature genes.
+If matrix rows can be associated to genes, consider to use `functional_enrichment(res,
+...)` to perform function enrichment for the signature genes. See [this vignette](http://bioconductor.org/packages/devel/bioc/vignettes/cola/inst/doc/functional_enrichment.html) for more detailed explanations.
 
 
  
@@ -37470,37 +37518,29 @@ sessionInfo()
 #> [10] LC_TELEPHONE=C             LC_MEASUREMENT=en_GB.UTF-8 LC_IDENTIFICATION=C       
 #> 
 #> attached base packages:
-#> [1] grid      parallel  stats     graphics  grDevices utils     datasets  methods   base     
+#> [1] grid      stats     graphics  grDevices utils     datasets  methods   base     
 #> 
 #> other attached packages:
-#>  [1] genefilter_1.66.0     ComplexHeatmap_2.1.1  markdown_1.1          knitr_1.26           
-#>  [5] preprocessCore_1.46.0 cola_1.3.2            GEOquery_2.52.0       Biobase_2.44.0       
-#>  [9] BiocGenerics_0.30.0   GetoptLong_0.1.7     
+#> [1] genefilter_1.66.0    ComplexHeatmap_2.3.1 markdown_1.1         knitr_1.26          
+#> [5] GetoptLong_0.1.7     cola_1.3.2          
 #> 
 #> loaded via a namespace (and not attached):
-#>  [1] bitops_1.0-6         matrixStats_0.55.0   bit64_0.9-7          doParallel_1.0.15   
-#>  [5] RColorBrewer_1.1-2   httr_1.4.1           tools_3.6.0          backports_1.1.5     
-#>  [9] R6_2.4.1             DBI_1.0.0            lazyeval_0.2.2       colorspace_1.4-1    
-#> [13] withr_2.1.2          tidyselect_0.2.5     gridExtra_2.3        bit_1.1-14          
-#> [17] compiler_3.6.0       xml2_1.2.2           microbenchmark_1.4-7 pkgmaker_0.28       
-#> [21] slam_0.1-46          scales_1.1.0         readr_1.3.1          NMF_0.23.6          
-#> [25] stringr_1.4.0        digest_0.6.23        pkgconfig_2.0.3      bibtex_0.4.2        
-#> [29] highr_0.8            limma_3.40.6         rlang_0.4.2          GlobalOptions_0.1.1 
-#> [33] RSQLite_2.1.2        impute_1.58.0        shape_1.4.4          mclust_5.4.5        
-#> [37] dendextend_1.12.0    dplyr_0.8.3          RCurl_1.95-4.12      magrittr_1.5        
-#> [41] Matrix_1.2-17        Rcpp_1.0.3           munsell_0.5.0        S4Vectors_0.22.1    
-#> [45] viridis_0.5.1        lifecycle_0.1.0      stringi_1.4.3        plyr_1.8.4          
-#> [49] blob_1.2.0           crayon_1.3.4         lattice_0.20-38      splines_3.6.0       
-#> [53] annotate_1.62.0      circlize_0.4.9       hms_0.5.2            zeallot_0.1.0       
-#> [57] pillar_1.4.2         rjson_0.2.20         rngtools_1.4         reshape2_1.4.3      
-#> [61] codetools_0.2-16     stats4_3.6.0         XML_3.98-1.20        glue_1.3.1          
-#> [65] evaluate_0.14        png_0.1-7            vctrs_0.2.0          foreach_1.4.7       
-#> [69] polyclip_1.10-0      gtable_0.3.0         purrr_0.3.3          tidyr_1.0.0         
-#> [73] clue_0.3-57          assertthat_0.2.1     ggplot2_3.2.1        xfun_0.11           
-#> [77] gridBase_0.4-7       eulerr_6.0.0         xtable_1.8-4         skmeans_0.2-11      
-#> [81] survival_2.44-1.1    viridisLite_0.3.0    tibble_2.1.3         iterators_1.0.12    
-#> [85] AnnotationDbi_1.46.1 registry_0.5-1       memoise_1.1.0        IRanges_2.18.3      
-#> [89] cluster_2.1.0        brew_1.0-6
+#>  [1] circlize_0.4.8       shape_1.4.4          xfun_0.11            slam_0.1-46         
+#>  [5] lattice_0.20-38      splines_3.6.0        colorspace_1.4-1     vctrs_0.2.0         
+#>  [9] stats4_3.6.0         blob_1.2.0           XML_3.98-1.20        survival_2.44-1.1   
+#> [13] rlang_0.4.2          pillar_1.4.2         DBI_1.0.0            BiocGenerics_0.30.0 
+#> [17] bit64_0.9-7          RColorBrewer_1.1-2   matrixStats_0.55.0   stringr_1.4.0       
+#> [21] GlobalOptions_0.1.1  evaluate_0.14        memoise_1.1.0        Biobase_2.44.0      
+#> [25] IRanges_2.18.3       parallel_3.6.0       AnnotationDbi_1.46.1 highr_0.8           
+#> [29] Rcpp_1.0.3           xtable_1.8-4         backports_1.1.5      S4Vectors_0.22.1    
+#> [33] annotate_1.62.0      skmeans_0.2-11       bit_1.1-14           microbenchmark_1.4-7
+#> [37] brew_1.0-6           impute_1.58.0        rjson_0.2.20         png_0.1-7           
+#> [41] digest_0.6.23        stringi_1.4.3        polyclip_1.10-0      clue_0.3-57         
+#> [45] tools_3.6.0          bitops_1.0-6         magrittr_1.5         eulerr_6.0.0        
+#> [49] RCurl_1.95-4.12      RSQLite_2.1.4        tibble_2.1.3         cluster_2.1.0       
+#> [53] crayon_1.3.4         pkgconfig_2.0.3      zeallot_0.1.0        Matrix_1.2-17       
+#> [57] xml2_1.2.2           httr_1.4.1           R6_2.4.1             mclust_5.4.5        
+#> [61] compiler_3.6.0
 ```
 
 
